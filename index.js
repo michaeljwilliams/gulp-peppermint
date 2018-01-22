@@ -3,9 +3,6 @@ const   through = require("through2"),
         path = require("path"),
         Buffer = require("safe-buffer").Buffer,
         pep = require("peppermint");
-// const File = require("vinyl");
-// const VinylBufferStream = require("vinyl-bufferstream");
-// const pump = require("pump");
 
 const PLUGIN_NAME = "gulp-peppermint";
 
@@ -24,10 +21,6 @@ module.exports = function(context, options) {
 
         if (file.isStream()) {
             self.emit("error", new PluginError(PLUGIN_NAME, "Streaming isn't supported."));
-
-            // or, if you can handle Streams:
-            //file.contents = file.contents.pipe(...
-            //return cb(null, file);
         } else if (file.isBuffer()) {
             try {
                 file.contents = Buffer.from(pep(file.contents.toString(), context, options));
