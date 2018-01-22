@@ -11,8 +11,8 @@ module.exports = function(context, options) {
     context = context || {};
     options = options || {};
 
-    let transform = function(file, encoding, cb) {
-        let self = this;
+    const transform = function(file, encoding, cb) {
+        const self = this;
 
         if (file.isNull()) {
             cb(null, file);
